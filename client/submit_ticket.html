@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Submit a Ticket - Kahuna</title>
+    <!-- Include Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Include custom CSS -->
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">Kahuna</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link" href="home.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="myproducts.html">My Products</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="tickets.html">Help</a>
+                    </li>
+                </ul>
+                <ul class="navbar-nav mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <button id="logoutButton" class="nav-link btn btn-link">Logout</button>
+                    </li>
+                </ul>
+            </div>
+            <div id="error-message" class="alert alert-danger" role="alert" style="display: none;"></div>
+        </div>
+    </nav>
+
+    <!-- Ticket Submission Form -->
+    <div class="container mt-5">
+        <h1>Submit a Ticket</h1>
+        <form id="ticketForm">
+            <div class="mb-3">
+                <label for="title" class="form-label">Title</label>
+                <input type="text" class="form-control" id="title" name="title" placeholder="Enter ticket title"
+                    required>
+            </div>
+            <div class="mb-3">
+                <label for="productSerialNumber" class="form-label">Product Serial Number</label>
+                <input type="text" class="form-control" id="productSerialNumber" name="productSerialNumber"
+                    placeholder="Enter product serial number" required>
+            </div>
+            <div class="mb-3">
+                <label for="issueDescription" class="form-label">Issue Description</label>
+                <textarea class="form-control" id="issueDescription" name="issueDescription" rows="5"
+                    placeholder="Describe the issue you're experiencing" required></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary">Submit Ticket</button>
+        </form>
+    </div>
+
+    <!-- Include Bootstrap JavaScript -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Include custom JavaScript -->
+    <script src="js/kahuna.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const urlParams = new URLSearchParams(window.location.search);
+            const serialNumber = urlParams.get('serialNumber');
+            if (serialNumber) {
+                const productSerialNumberInput = document.getElementById('productSerialNumber');
+                if (productSerialNumberInput) {
+                    productSerialNumberInput.value = serialNumber;
+                } else {
+                    console.error('Element with ID "productSerialNumber" not found.');
+                }
+            }
+        });
+    </script>
+</body>
+</html>

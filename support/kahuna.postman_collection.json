@@ -1,0 +1,1094 @@
+{
+	"info": {
+		"_postman_id": "7f0b49f3-5eed-4768-9136-53ef750ffe4f",
+		"name": "kahuna",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "33261005"
+	},
+	"item": [
+		{
+			"name": "Customer",
+			"item": [
+				{
+					"name": "Authentication",
+					"item": [
+						{
+							"name": "Register",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "name",
+											"value": "John",
+											"type": "text"
+										},
+										{
+											"key": "surname",
+											"value": "Borg",
+											"type": "text"
+										},
+										{
+											"key": "email",
+											"value": "JohnBorg@gmail.com",
+											"type": "text"
+										},
+										{
+											"key": "password",
+											"value": "Johnborg",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{BASE_URI}}user/register",
+									"host": [
+										"{{BASE_URI}}user"
+									],
+									"path": [
+										"register"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Login",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"var responseBody = pm.response.json();",
+											"pm.environment.set(\"user\", responseBody.data.user);",
+											"pm.environment.set(\"token\", responseBody.data.token);"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "email",
+											"value": "JohnBorg@gmail.com",
+											"type": "text"
+										},
+										{
+											"key": "password",
+											"value": "Johnborg",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{BASE_URI}}user/login",
+									"host": [
+										"{{BASE_URI}}user"
+									],
+									"path": [
+										"login"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Logout",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "x-api-key",
+										"value": "{{token}}"
+									},
+									{
+										"key": "x-api-user",
+										"value": "{{user}}"
+									}
+								],
+								"url": {
+									"raw": "{{BASE_URI}}user/logout",
+									"host": [
+										"{{BASE_URI}}user"
+									],
+									"path": [
+										"logout"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Verify Token",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "x-api-key",
+										"value": "{{token}}"
+									},
+									{
+										"key": "x-api-user",
+										"value": "{{user}}"
+									}
+								],
+								"url": {
+									"raw": "{{BASE_URI}}token",
+									"host": [
+										"{{BASE_URI}}token"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Products",
+					"item": [
+						{
+							"name": "Register Product",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "x-api-key",
+										"value": "{{token}}"
+									},
+									{
+										"key": "x-api-user",
+										"value": "{{user}}"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "serialNumber",
+											"value": "KHWM8199911",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{BASE_URI}}product/register",
+									"host": [
+										"{{BASE_URI}}product"
+									],
+									"path": [
+										"register"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "View Products",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "x-api-key",
+										"value": "{{token}}"
+									},
+									{
+										"key": "x-api-user",
+										"value": "{{user}}"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": []
+								},
+								"url": {
+									"raw": "{{BASE_URI}}user/products",
+									"host": [
+										"{{BASE_URI}}user"
+									],
+									"path": [
+										"products"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Tickets",
+					"item": [
+						{
+							"name": "Create Ticket",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "x-api-key",
+										"value": "{{token}}"
+									},
+									{
+										"key": "x-api-user",
+										"value": "{{user}}"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "title",
+											"value": "Testing ticket",
+											"type": "text"
+										},
+										{
+											"key": "productSerialNumber",
+											"value": "KHWM8199912",
+											"type": "text"
+										},
+										{
+											"key": "issueDescription",
+											"value": "Testing creating ticket from PM",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{BASE_URI}}ticket",
+									"host": [
+										"{{BASE_URI}}ticket"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "View tickets",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "x-api-key",
+										"value": "{{token}}"
+									},
+									{
+										"key": "x-api-user",
+										"value": "{{user}}"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": []
+								},
+								"url": {
+									"raw": "{{BASE_URI}}user/tickets",
+									"host": [
+										"{{BASE_URI}}user"
+									],
+									"path": [
+										"tickets"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Reply Tickets",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "x-api-key",
+										"value": "{{token}}"
+									},
+									{
+										"key": "x-api-user",
+										"value": "{{user}}"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "ticketId",
+											"value": "14",
+											"type": "text"
+										},
+										{
+											"key": "replyMessage",
+											"value": "Hello Im testing via PM",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{BASE_URI}}ticket/reply",
+									"host": [
+										"{{BASE_URI}}ticket"
+									],
+									"path": [
+										"reply"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "View ticket replies",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "x-api-key",
+										"value": "{{token}}"
+									},
+									{
+										"key": "x-api-user",
+										"value": "{{user}}"
+									},
+									{
+										"key": "ticket_id",
+										"value": "13",
+										"type": "text",
+										"disabled": true
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": []
+								},
+								"url": {
+									"raw": "{{BASE_URI}}ticket/replies?ticket_id=14",
+									"host": [
+										"{{BASE_URI}}ticket"
+									],
+									"path": [
+										"replies"
+									],
+									"query": [
+										{
+											"key": "ticket_id",
+											"value": "14"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Admin",
+			"item": [
+				{
+					"name": "Admin Authentication",
+					"item": [
+						{
+							"name": "Register",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "name",
+											"value": "Admin",
+											"type": "text"
+										},
+										{
+											"key": "surname",
+											"value": "User",
+											"type": "text"
+										},
+										{
+											"key": "email",
+											"value": "admin@admin.com",
+											"type": "text"
+										},
+										{
+											"key": "password",
+											"value": "Test123",
+											"type": "text"
+										},
+										{
+											"key": "role",
+											"value": "agent",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{BASE_URI}}user/register",
+									"host": [
+										"{{BASE_URI}}user"
+									],
+									"path": [
+										"register"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Login",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"var responseBody = pm.response.json();",
+											"pm.environment.set(\"user\", responseBody.data.user);",
+											"pm.environment.set(\"token\", responseBody.data.token);"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "email",
+											"value": "admin@admin.com",
+											"type": "text"
+										},
+										{
+											"key": "password",
+											"value": "Test123",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{BASE_URI}}user/login",
+									"host": [
+										"{{BASE_URI}}user"
+									],
+									"path": [
+										"login"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Logout",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "x-api-key",
+										"value": "{{token}}"
+									},
+									{
+										"key": "x-api-user",
+										"value": "{{user}}"
+									}
+								],
+								"url": {
+									"raw": "{{BASE_URI}}user/logout",
+									"host": [
+										"{{BASE_URI}}user"
+									],
+									"path": [
+										"logout"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Verify Token",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "x-api-key",
+										"value": "{{token}}"
+									},
+									{
+										"key": "x-api-user",
+										"value": "{{user}}"
+									}
+								],
+								"url": {
+									"raw": "{{BASE_URI}}token",
+									"host": [
+										"{{BASE_URI}}token"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Admin Products",
+					"item": [
+						{
+							"name": "Create Product",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "x-api-key",
+										"value": "{{token}}"
+									},
+									{
+										"key": "x-api-user",
+										"value": "{{user}}"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "serialNumber",
+											"value": "KHWM8199913",
+											"type": "text"
+										},
+										{
+											"key": "productName",
+											"value": "Smart Air Fryer",
+											"type": "text"
+										},
+										{
+											"key": "warrantyPeriod",
+											"value": "3",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{BASE_URI}}admin/product",
+									"host": [
+										"{{BASE_URI}}admin"
+									],
+									"path": [
+										"product"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "View Products",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "x-api-key",
+										"value": "{{token}}"
+									},
+									{
+										"key": "x-api-user",
+										"value": "{{user}}"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": []
+								},
+								"url": {
+									"raw": "{{BASE_URI}}admin/products",
+									"host": [
+										"{{BASE_URI}}admin"
+									],
+									"path": [
+										"products"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Delete Product",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "x-api-key",
+										"value": "{{token}}"
+									},
+									{
+										"key": "x-api-user",
+										"value": "{{user}}"
+									},
+									{
+										"key": "serialNumber",
+										"value": "sad",
+										"type": "text",
+										"disabled": true
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "serialNumber",
+											"value": "KHSS988883",
+											"type": "text"
+										},
+										{
+											"key": "productName",
+											"value": "Smart Air Fryer",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "warrantyPeriod",
+											"value": "3",
+											"type": "text",
+											"disabled": true
+										}
+									]
+								},
+								"url": {
+									"raw": "{{BASE_URI}}admin/product/delete",
+									"host": [
+										"{{BASE_URI}}admin"
+									],
+									"path": [
+										"product",
+										"delete"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Admin Tickets",
+					"item": [
+						{
+							"name": "View tickets",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "x-api-key",
+										"value": "{{token}}"
+									},
+									{
+										"key": "x-api-user",
+										"value": "{{user}}"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": []
+								},
+								"url": {
+									"raw": "{{BASE_URI}}admin/tickets",
+									"host": [
+										"{{BASE_URI}}admin"
+									],
+									"path": [
+										"tickets"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Reply Tickets",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "x-api-key",
+										"value": "{{token}}"
+									},
+									{
+										"key": "x-api-user",
+										"value": "{{user}}"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "ticketId",
+											"value": "1",
+											"type": "text"
+										},
+										{
+											"key": "replyMessage",
+											"value": "Hello Im testing agent replies via PM",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{BASE_URI}}ticket/reply",
+									"host": [
+										"{{BASE_URI}}ticket"
+									],
+									"path": [
+										"reply"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "View ticket replies",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "x-api-key",
+										"value": "{{token}}"
+									},
+									{
+										"key": "x-api-user",
+										"value": "{{user}}"
+									},
+									{
+										"key": "ticket_id",
+										"value": "13",
+										"type": "text",
+										"disabled": true
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": []
+								},
+								"url": {
+									"raw": "{{BASE_URI}}ticket/replies?ticket_id=1",
+									"host": [
+										"{{BASE_URI}}ticket"
+									],
+									"path": [
+										"replies"
+									],
+									"query": [
+										{
+											"key": "ticket_id",
+											"value": "1"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Admin Users",
+					"item": [
+						{
+							"name": "View Users",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "x-api-key",
+										"value": "{{token}}"
+									},
+									{
+										"key": "x-api-user",
+										"value": "{{user}}"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": []
+								},
+								"url": {
+									"raw": "{{BASE_URI}}admin/users",
+									"host": [
+										"{{BASE_URI}}admin"
+									],
+									"path": [
+										"users"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update User",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "x-api-key",
+										"value": "{{token}}"
+									},
+									{
+										"key": "x-api-user",
+										"value": "{{user}}"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\": \"John\",\r\n    \"surname\": \"Doe\",\r\n    \"email\": \"john.doe@example.com\",\r\n    \"role\": \"customer\"\r\n}\r\n"
+								},
+								"url": {
+									"raw": "{{BASE_URI}}admin/user/update/4",
+									"host": [
+										"{{BASE_URI}}admin"
+									],
+									"path": [
+										"user",
+										"update",
+										"4"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create User",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "x-api-key",
+										"value": "{{token}}"
+									},
+									{
+										"key": "x-api-user",
+										"value": "{{user}}"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\": \"John\",\r\n    \"surname\": \"Doe\",\r\n    \"email\": \"john.doe@test.com\",\r\n    \"password\": \"password123\",\r\n    \"role\": \"customer\"\r\n}\r\n"
+								},
+								"url": {
+									"raw": "{{BASE_URI}}admin/user/create",
+									"host": [
+										"{{BASE_URI}}admin"
+									],
+									"path": [
+										"user",
+										"create"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		}
+	]
+}

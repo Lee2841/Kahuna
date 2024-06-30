@@ -1,0 +1,9 @@
+{
+    "require": {
+        "altorouter/altorouter": "2.0"
+    },
+    "autoload": {
+        "psr-4": {"com\\icemalta\\kahuna\\api\\": "/var/www/html/com/icemalta/kahuna/api/"}
+    }
+}
+

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home - Kahuna</title>
+    <!-- Include Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Include custom CSS -->
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">Kahuna</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="home.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="myproducts.html">My Products</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="tickets.html">Help</a>
+                    </li>
+                </ul>
+                <ul class="navbar-nav mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <button id="logoutButton" class="nav-link btn btn-link">Logout</button>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    
+    <div id="error-message" class="alert alert-danger floating-error d-none" role="alert"></div>
+    <div id="success-message" class="alert alert-danger floating-success d-none" role="alert"></div>
+
+    <!-- Hero section -->
+    <div class="hero">
+        <h1>Welcome to Kahuna</h1>
+        <p>Your trusted source for quality products. Register your product below!</p>
+    </div>
+
+    <div class="container">
+        <div class="form-container">
+            <form id="productForm">
+                <div class="mb-3">
+                    <label for="serialNumber" class="form-label">Enter Serial Number</label>
+                    <input type="text" class="form-control" id="serialNumber" name="serialNumber" required>
+                </div>
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Include Bootstrap JavaScript -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Include custom JavaScript -->
+    <script src="js/kahuna.js"></script>
+</body>
+</html>
