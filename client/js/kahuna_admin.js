@@ -536,6 +536,7 @@ async function bindTickets() {
                         <h5 class="card-title">${ticket.title}</h5>
                         <p class="card-text">Description: ${ticket.issue_description}</p>
                         <p class="card-text">Status: ${ticket.status}</p>
+                        <p class="card-text">Serial Number: ${ticket.product_serial_number}</p>
                     </div>
                     <div class="card-footer">
                         <a href="admin_ticket_replies.html?ticket_id=${ticket.id}&title=${encodeURIComponent(ticket.title)}&description=${encodeURIComponent(ticket.issue_description)}&status=${encodeURIComponent(ticket.status)}" class="btn btn-primary" data-ticket-id="${ticket.id}">View Details</a>
