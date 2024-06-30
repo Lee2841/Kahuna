@@ -329,10 +329,7 @@ function bindTicketForm() {
         evt.preventDefault();
 
         const formData = new FormData(document.getElementById('ticketForm'));
-        const title = formData.get('title');
-        const productSerialNumber = formData.get('productSerialNumber');
-        const issueDescription = formData.get('issueDescription');
-
+        
         try {
             const token = localStorage.getItem('kahuna_token');
             const user = localStorage.getItem('kahuna_user');
